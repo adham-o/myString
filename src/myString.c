@@ -9,7 +9,27 @@
 
 /* Functions */
 
-void *memchr(const void *str, int c, size_t n) { /* TODO */ }
+void *memchr(const void *str, int c, size_t n) {
+    unsigned char _c = c;
+    unsigned char *cptr = str;
+    bool match_found = false;
+
+    for (size_t iter_n = 0; iter_n < n; ++iter_n) {
+        if (*cptr == _c) {
+            match_found = true;
+            break;
+        }
+        ++cptr;
+    }
+
+    if (match_found) {
+        return cptr;
+    }
+    else {
+        return NULL;
+    }
+}
+
 int memcmp(const void *str1, const void *str2, size_t n) { /* TODO */ }
 void *memcpy(void *dest, const void *src, size_t n) { /* TODO */ }
 void *memmove(void *dest, const void *src, size_t n) { /* TODO */ }

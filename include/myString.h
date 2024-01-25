@@ -1,6 +1,7 @@
 /*
  *  Author:         Adham Omar (adham-o)
- *  Description:    My own implementation of the C String Standard Library
+ *  Description:    My own implementation of the C String Standard Library as defined in:
+ *                  https://www.tutorialspoint.com/c_standard_library/string_h.htm
  */
 
 #ifndef _MYSTRING_H_INCLUDED_
@@ -8,7 +9,7 @@
 
 /* Includes */
 
-
+#include <stdbool.h>
 
 /* Macros */
 

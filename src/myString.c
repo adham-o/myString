@@ -69,7 +69,24 @@ void *memcpy(void *restrict dest, const void *restrict src, size_t n) {
 }
 #endif
 
-void *memmove(void *dest, const void *src, size_t n) { /* TODO */ }
+void *memmove(void *dest, const void *src, size_t n) {
+    unsigned char *_dest = (unsigned char *)dest;
+    unsigned char *_src = (unsigned char *)src;
+
+    if (dest < src) {
+        for (size_t iter_n = 0; iter_n < n; ++iter_n) {
+            _dest[iter_n] = _src[iter_n];
+        }
+    }
+    else {
+        for (size_t iter_n = n-1; iter_n >= 0; --iter_n) {
+            _dest[iter_n] = _src[iter_n];
+        }
+    }
+
+    return dest;
+}
+
 void *memset(void *str, int c, size_t n) { /* TODO */ }
 char *strcat(char *dest, const char *src) { /* TODO */ }
 char *strncat(char *dest, const char *src, size_t n) { /* TODO */ }

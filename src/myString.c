@@ -53,6 +53,8 @@ void *memcpy(void *dest, const void *src, size_t n) {
     for (size_t iter_n = 0; iter_n < n; ++iter_n) {
         _dest[iter_n] = _src[iter_n];
     }
+
+    return dest;
 }
 #else
 void *memcpy(void *restrict dest, const void *restrict src, size_t n) {
@@ -62,6 +64,8 @@ void *memcpy(void *restrict dest, const void *restrict src, size_t n) {
     for (size_t iter_n = 0; iter_n < n; ++iter_n) {
         _dest[iter_n] = _src[iter_n];
     }
+
+    return dest;
 }
 #endif
 

@@ -30,7 +30,21 @@ void *memchr(const void *str, int c, size_t n) {
     }
 }
 
-int memcmp(const void *str1, const void *str2, size_t n) { /* TODO */ }
+int memcmp(const void *str1, const void *str2, size_t n) { 
+    char res = 0;
+    char *_str1 = (char *)str1;
+    char *_str2 = (char *)str2;
+
+    for (size_t iter_n = 0; iter_n < n; ++iter_n) {
+        res = _str1[iter_n] - _str2[iter_n];
+        if (res != 0) {
+            break;
+        }
+    }
+
+    return res;
+}
+
 void *memcpy(void *dest, const void *src, size_t n) { /* TODO */ }
 void *memmove(void *dest, const void *src, size_t n) { /* TODO */ }
 void *memset(void *str, int c, size_t n) { /* TODO */ }

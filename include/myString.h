@@ -39,7 +39,13 @@ typedef unsigned long long size_t;
 
 extern void *memchr(const void *str, int c, size_t n);
 extern int memcmp(const void *str1, const void *str2, size_t n);
+
+#ifndef C99
 extern void *memcpy(void *dest, const void *src, size_t n);
+#else
+extern void *memcpy(void *restrict dest, const void *restrict src, size_t n);
+#endif
+
 extern void *memmove(void *dest, const void *src, size_t n);
 extern void *memset(void *str, int c, size_t n);
 extern char *strcat(char *dest, const char *src);

@@ -87,7 +87,17 @@ void *memmove(void *dest, const void *src, size_t n) {
     return dest;
 }
 
-void *memset(void *str, int c, size_t n) { /* TODO */ }
+void *memset(void *str, int c, size_t n) {
+    unsigned char _c = (unsigned char)c;
+    unsigned char *_str = (unsigned char *)str;
+
+    for (size_t iter_n = 0; iter_n < n; ++iter_n) {
+        _str[iter_n] = _c;
+    }
+
+    return str;
+}
+
 char *strcat(char *dest, const char *src) { /* TODO */ }
 char *strncat(char *dest, const char *src, size_t n) { /* TODO */ }
 char *strchr(const char *str, int c) { /* TODO */ }

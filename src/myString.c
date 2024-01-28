@@ -10,8 +10,8 @@
 /* Functions */
 
 void *memchr(const void *str, int c, size_t n) {
-    unsigned char _c = c;
-    unsigned char *cptr = str;
+    unsigned char _c = (unsigned char)c;
+    unsigned char *cptr = (unsigned char *)str;
     bool match_found = false;
 
     for (size_t iter_n = 0; iter_n < n; ++iter_n) {

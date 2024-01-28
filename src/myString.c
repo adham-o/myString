@@ -47,8 +47,8 @@ int memcmp(const void *str1, const void *str2, size_t n) {
 
 #ifndef C99
 void *memcpy(void *dest, const void *src, size_t n) {
-    unsigned char *_dest = dest;
-    unsigned char *_src = src;
+    unsigned char *_dest = (unsigned char *)dest;
+    unsigned char *_src = (unsigned char *)src;
 
     for (size_t iter_n = 0; iter_n < n; ++iter_n) {
         _dest[iter_n] = _src[iter_n];
@@ -58,8 +58,8 @@ void *memcpy(void *dest, const void *src, size_t n) {
 }
 #else
 void *memcpy(void *restrict dest, const void *restrict src, size_t n) {
-    unsigned char *_dest = dest;
-    unsigned char *_src = src;
+    unsigned char *_dest = (unsigned char *)dest;
+    unsigned char *_src = (unsigned char *)src;
 
     for (size_t iter_n = 0; iter_n < n; ++iter_n) {
         _dest[iter_n] = _src[iter_n];

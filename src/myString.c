@@ -98,7 +98,34 @@ void *memset(void *str, int c, size_t n) {
     return str;
 }
 
-char *strcat(char *dest, const char *src) { /* TODO */ }
+#ifndef C99
+char *strcat(char *dest, const char *src) {
+    char *dest_c = dest;         // shall be used to write into dest buffer
+    char *src_c = src;           // shall be used to read from src string
+
+    while (*dest_c++ != NULL) {} // iterate until end of dest string is reached
+    while (*src_c != NULL) {     // append src string to dest string at dest NULL terminator
+        *dest_c++ = *src_c++;
+    }
+    *dest_c = NULL;              // add NULL terminator back to dest buffer
+    
+    return dest;
+}
+#else
+char *strcat(char *restrict dest, const char *restrict src) {
+    char *dest_c = dest;         // shall be used to write into dest buffer
+    char *src_c = src;           // shall be used to read from src string
+
+    while (*dest_c++ != NULL) {} // iterate until end of dest string is reached
+    while (*src_c != NULL) {     // append src string to dest string at dest NULL terminator
+        *dest_c++ = *src_c++;
+    }
+    *dest_c = NULL;              // add NULL terminator back to dest buffer
+    
+    return dest;
+}
+#endif
+
 char *strncat(char *dest, const char *src, size_t n) { /* TODO */ }
 char *strchr(const char *str, int c) { /* TODO */ }
 int strcmp(const char *str1, const char *str2) { /* TODO */ }

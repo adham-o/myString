@@ -48,7 +48,13 @@ extern void *memcpy(void *restrict dest, const void *restrict src, size_t n);
 
 extern void *memmove(void *dest, const void *src, size_t n);
 extern void *memset(void *str, int c, size_t n);
+
+#ifndef C99
 extern char *strcat(char *dest, const char *src);
+#else
+extern char *strcat(char *restrict dest, const char *restrict src);
+#endif
+
 extern char *strncat(char *dest, const char *src, size_t n);
 extern char *strchr(const char *str, int c);
 extern int strcmp(const char *str1, const char *str2);

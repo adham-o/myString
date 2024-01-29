@@ -126,7 +126,42 @@ char *strcat(char *restrict dest, const char *restrict src) {
 }
 #endif
 
-char *strncat(char *dest, const char *src, size_t n) { /* TODO */ }
+#ifndef C99
+char *strncat(char *dest, const char *src, size_t n) {
+    char *dest_c = dest;
+    char *src_c = src;
+    size_t _n = n;
+
+    while (*dest_c++ != NULL) {}    // iterate until end of dest string is reached
+
+    // Append src string to dest string at dest NULL terminator
+
+    while ((*src_c != NULL) && (_n-- > 0)) {
+        *dest_c++ = *src_c++;
+    }
+    *dest_c = NULL;                 // add NULL terminator back to dest buffer
+    
+    return dest;
+}
+#else
+char *strncat(char *restrict dest, const char *restrict src, size_t n) {
+    char *dest_c = dest;
+    char *src_c = src;
+    size_t _n = n;
+
+    while (*dest_c++ != NULL) {}    // iterate until end of dest string is reached
+
+    // Append src string to dest string at dest NULL terminator
+
+    while ((*src_c != NULL) && (_n-- > 0)) {
+        *dest_c++ = *src_c++;
+    }
+    *dest_c = NULL;                 // add NULL terminator back to dest buffer
+    
+    return dest;
+}
+#endif
+
 char *strchr(const char *str, int c) { /* TODO */ }
 int strcmp(const char *str1, const char *str2) { /* TODO */ }
 int strncmp(const char *str1, const char *str2, size_t n) { /* TODO */ }

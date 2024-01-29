@@ -55,7 +55,12 @@ extern char *strcat(char *dest, const char *src);
 extern char *strcat(char *restrict dest, const char *restrict src);
 #endif
 
+#ifndef C99
 extern char *strncat(char *dest, const char *src, size_t n);
+#else
+extern char *strncat(char *restrict dest, const char *restrict src, size_t n);
+#endif
+
 extern char *strchr(const char *str, int c);
 extern int strcmp(const char *str1, const char *str2);
 extern int strncmp(const char *str1, const char *str2, size_t n);

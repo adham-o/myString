@@ -67,7 +67,6 @@ extern char *strerror(int errnum);
 extern size_t strlen(const char *str);
 extern char *strpbrk(const char *str1, const char *str2);
 extern char *strrchr(const char *str, int c);
-extern char *strrchr(const char *str, int c);
 extern size_t strspn(const char *str1, const char *str2);
 extern char *strstr(const char *haystack, const char *needle);
 extern char *strtok(char *str, const char *delim);

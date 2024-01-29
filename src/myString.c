@@ -138,7 +138,6 @@ char *strerror(int errnum) { /* TODO */ }
 size_t strlen(const char *str) { /* TODO */ }
 char *strpbrk(const char *str1, const char *str2) { /* TODO */ }
 char *strrchr(const char *str, int c) { /* TODO */ }
-char *strrchr(const char *str, int c) { /* TODO */ }
 size_t strspn(const char *str1, const char *str2) { /* TODO */ }
 char *strstr(const char *haystack, const char *needle) { /* TODO */ }
 char *strtok(char *str, const char *delim) { /* TODO */ }

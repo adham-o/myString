@@ -168,7 +168,32 @@ char *strncat(char *restrict dest, const char *restrict src, size_t n) {
 }
 #endif
 
-char *strchr(const char *str, int c) { /* TODO */ }
+char *strchr(const char *str, int c) {
+    unsigned char _c = (unsigned char)c;
+    unsigned char *cptr = (unsigned char *)str;
+    bool match_found = false;
+
+    if (_c == NULL) {
+        while (*cptr++ != NULL) {}    // iterate until end of str is reached
+    }
+    else {
+        while (cptr != NULL) {
+            if (*cptr == _c) {
+                match_found = true;
+                break;
+            }
+            ++cptr;
+        }
+    }
+
+    if (match_found) {
+        return cptr;
+    }
+    else {
+        return NULL;
+    }
+}
+
 int strcmp(const char *str1, const char *str2) { /* TODO */ }
 int strncmp(const char *str1, const char *str2, size_t n) { /* TODO */ }
 int strcoll(const char *str1, const char *str2) { /* TODO */ }

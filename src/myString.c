@@ -100,11 +100,14 @@ void *memset(void *str, int c, size_t n) {
 
 #ifndef C99
 char *strcat(char *dest, const char *src) {
-    char *dest_c = dest;         // shall be used to write into dest buffer
-    char *src_c = src;           // shall be used to read from src string
+    char *dest_c = dest;
+    char *src_c = src;
 
     while (*dest_c++ != NULL) {} // iterate until end of dest string is reached
-    while (*src_c != NULL) {     // append src string to dest string at dest NULL terminator
+
+     // Append src string to dest string at dest NULL terminator
+
+    while (*src_c != NULL) {
         *dest_c++ = *src_c++;
     }
     *dest_c = NULL;              // add NULL terminator back to dest buffer
@@ -113,11 +116,14 @@ char *strcat(char *dest, const char *src) {
 }
 #else
 char *strcat(char *restrict dest, const char *restrict src) {
-    char *dest_c = dest;         // shall be used to write into dest buffer
-    char *src_c = src;           // shall be used to read from src string
+    char *dest_c = dest;
+    char *src_c = src;
 
     while (*dest_c++ != NULL) {} // iterate until end of dest string is reached
-    while (*src_c != NULL) {     // append src string to dest string at dest NULL terminator
+
+     // Append src string to dest string at dest NULL terminator
+
+    while (*src_c != NULL) {
         *dest_c++ = *src_c++;
     }
     *dest_c = NULL;              // add NULL terminator back to dest buffer

@@ -211,20 +211,23 @@ int strcmp(const char *str1, const char *str2) {
 int strncmp(const char *str1, const char *str2, size_t n) {
     char *_str1 = str1;
     char *_str2 = str2;
+    int res = 0;
 
     while (_str1 && _str2 && n--) {    // end of both strings and number of characters
                                        // to compare
-        if ((*_str1++ - *_str2++) != 0) {
+        res = *_str1++ - *_str2++;
+        if (res != 0) {
             break;
         }
     }
 
     // Condition to ensure that comparison stays under character limit n
-    if (n == 0) {
-        return *(_str1-1) - *(_str2-1);
+    if ((n == 0) || (_str1 && _str2)) {
+        return res;
     }
     else {
-        return *_str1 - *_str2;
+        return *_str1 - *_str2;         // so that precedence can still be checked if one
+                                        // string terminates before the other
     }
 }
 

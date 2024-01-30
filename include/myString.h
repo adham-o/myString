@@ -72,7 +72,12 @@ extern char *strcpy(char *dest, const char *src);
 extern char *strcpy(char *restrict dest, const char *restrict src);
 #endif
 
+#ifndef C99
 extern char *strncpy(char *dest, const char *src, size_t n);
+#else
+extern char *strncpy(char *restrict dest, const char *restrict src, size_t n);
+#endif
+
 extern size_t strcspn(const char *str1, const char *str2);
 //extern char *strerror(int errnum);
 extern size_t strlen(const char *str);

@@ -266,7 +266,51 @@ extern char *strcpy(char *restrict dest, const char *restrict src) {
 }
 #endif
 
-char *strncpy(char *dest, const char *src, size_t n) { /* TODO */ }
+
+#ifndef C99
+char *strncpy(char *dest, const char *src, size_t n) {
+    char *_dest = dest;
+    char *_src = src;
+
+    while ((_src != NULL) && n--) {
+        *_dest++ = *_src++;
+    }
+
+    // Fill dest string with null characters until character count is reached if src string
+    // terminates before count is reached, otherwise leave the resultant string unterminated
+
+    if (_src == NULL) {
+        while (n--)
+        {
+            *_dest++ = NULL;
+        }
+    }
+
+    return dest;
+}
+#else
+char *strncpy(char *restrict dest, const char *restrict src, size_t n) {
+    char *_dest = dest;
+    char *_src = src;
+
+    while ((_src != NULL) && n--) {
+        *_dest++ = *_src++;
+    }
+
+    // Fill dest string with null characters until character count is reached if src string
+    // terminates before count is reached, otherwise leave the resultant string unterminated
+
+    if (_src == NULL) {
+        while (n--)
+        {
+            *_dest++ = NULL;
+        }
+    }
+
+    return dest;
+}
+#endif
+
 size_t strcspn(const char *str1, const char *str2) { /* TODO */ }
 
 //char *strerror(int errnum) {}

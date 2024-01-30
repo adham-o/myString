@@ -336,7 +336,14 @@ size_t strcspn(const char *str1, const char *str2) {
 
 //char *strerror(int errnum) {}
 
-size_t strlen(const char *str) { /* TODO */ }
+size_t strlen(const char *str) {
+    char *_str = str;
+
+    while (*_str++ != NULL) {}
+    
+    return (size_t)(_str-str-1);
+}
+
 char *strpbrk(const char *str1, const char *str2) { /* TODO */ }
 char *strrchr(const char *str, int c) { /* TODO */ }
 size_t strspn(const char *str1, const char *str2) { /* TODO */ }

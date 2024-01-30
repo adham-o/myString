@@ -208,7 +208,26 @@ int strcmp(const char *str1, const char *str2) {
     return *_str1 - *_str2;
 }
 
-int strncmp(const char *str1, const char *str2, size_t n) { /* TODO */ }
+int strncmp(const char *str1, const char *str2, size_t n) {
+    char *_str1 = str1;
+    char *_str2 = str2;
+
+    while (_str1 && _str2 && n--) {    // end of both strings and number of characters
+                                       // to compare
+        if ((*_str1++ - *_str2++) != 0) {
+            break;
+        }
+    }
+
+    // Condition to ensure that comparison stays under character limit n
+    if (n == 0) {
+        return *(_str1-1) - *(_str2-1);
+    }
+    else {
+        return *_str1 - *_str2;
+    }
+}
+
 int strcoll(const char *str1, const char *str2) { /* TODO */ }
 char *strcpy(char *dest, const char *src) { /* TODO */ }
 char *strncpy(char *dest, const char *src, size_t n) { /* TODO */ }

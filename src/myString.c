@@ -194,7 +194,20 @@ char *strchr(const char *str, int c) {
     }
 }
 
-int strcmp(const char *str1, const char *str2) { /* TODO */ }
+int strcmp(const char *str1, const char *str2) {
+    char *_str1 = str1;
+    char *_str2 = str2;
+
+    while (_str1 && _str2) {    // end of both strings not reached
+        char res = *_str1++ - *_str2++;
+        if (res != 0) {
+            break;
+        }
+    }
+
+    return *_str1 - *_str2;
+}
+
 int strncmp(const char *str1, const char *str2, size_t n) { /* TODO */ }
 int strcoll(const char *str1, const char *str2) { /* TODO */ }
 char *strcpy(char *dest, const char *src) { /* TODO */ }

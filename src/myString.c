@@ -197,15 +197,22 @@ char *strchr(const char *str, int c) {
 int strcmp(const char *str1, const char *str2) {
     char *_str1 = str1;
     char *_str2 = str2;
+    int res = 0;
 
     while (_str1 && _str2) {    // end of both strings not reached
-        char res = *_str1++ - *_str2++;
+        res = *_str1++ - *_str2++;
         if (res != 0) {
             break;
         }
     }
 
-    return *_str1 - *_str2;
+    if (_str1 && _str2) {
+        return res;
+    }
+    else {
+        return *_str1 - *_str2; // so that precedence can still be checked if one string
+                                // terminates before the other
+    }
 }
 
 int strncmp(const char *str1, const char *str2, size_t n) { /* TODO */ }

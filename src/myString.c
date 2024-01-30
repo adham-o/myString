@@ -215,7 +215,29 @@ int strcmp(const char *str1, const char *str2) {
     }
 }
 
-int strncmp(const char *str1, const char *str2, size_t n) { /* TODO */ }
+int strncmp(const char *str1, const char *str2, size_t n) {
+    char *_str1 = str1;
+    char *_str2 = str2;
+    int res = 0;
+
+    while (_str1 && _str2 && n--) {    // end of both strings and number of characters
+                                       // to compare
+        res = *_str1++ - *_str2++;
+        if (res != 0) {
+            break;
+        }
+    }
+
+    // Condition to ensure that comparison stays under character limit n
+    if ((n == 0) || (_str1 && _str2)) {
+        return res;
+    }
+    else {
+        return *_str1 - *_str2;         // so that precedence can still be checked if one
+                                        // string terminates before the other
+    }
+}
+
 int strcoll(const char *str1, const char *str2) { /* TODO */ }
 char *strcpy(char *dest, const char *src) { /* TODO */ }
 char *strncpy(char *dest, const char *src, size_t n) { /* TODO */ }

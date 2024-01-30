@@ -238,15 +238,19 @@ int strncmp(const char *str1, const char *str2, size_t n) {
     }
 }
 
-int strcoll(const char *str1, const char *str2) { /* TODO */ }
+//int strcoll(const char *str1, const char *str2) {}
+
 char *strcpy(char *dest, const char *src) { /* TODO */ }
 char *strncpy(char *dest, const char *src, size_t n) { /* TODO */ }
 size_t strcspn(const char *str1, const char *str2) { /* TODO */ }
-char *strerror(int errnum) { /* TODO */ }
+
+//char *strerror(int errnum) {}
+
 size_t strlen(const char *str) { /* TODO */ }
 char *strpbrk(const char *str1, const char *str2) { /* TODO */ }
 char *strrchr(const char *str, int c) { /* TODO */ }
 size_t strspn(const char *str1, const char *str2) { /* TODO */ }
 char *strstr(const char *haystack, const char *needle) { /* TODO */ }
 char *strtok(char *str, const char *delim) { /* TODO */ }
-size_t strxfrm(char *dest, const char *src, size_t n) { /* TODO */ }
+
+//size_t strxfrm(char *dest, const char *src, size_t n) {}

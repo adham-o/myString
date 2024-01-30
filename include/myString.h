@@ -64,17 +64,17 @@ extern char *strncat(char *restrict dest, const char *restrict src, size_t n);
 extern char *strchr(const char *str, int c);
 extern int strcmp(const char *str1, const char *str2);
 extern int strncmp(const char *str1, const char *str2, size_t n);
-extern int strcoll(const char *str1, const char *str2);
+//extern int strcoll(const char *str1, const char *str2);
 extern char *strcpy(char *dest, const char *src);
 extern char *strncpy(char *dest, const char *src, size_t n);
 extern size_t strcspn(const char *str1, const char *str2);
-extern char *strerror(int errnum);
+//extern char *strerror(int errnum);
 extern size_t strlen(const char *str);
 extern char *strpbrk(const char *str1, const char *str2);
 extern char *strrchr(const char *str, int c);
 extern size_t strspn(const char *str1, const char *str2);
 extern char *strstr(const char *haystack, const char *needle);
 extern char *strtok(char *str, const char *delim);
-extern size_t strxfrm(char *dest, const char *src, size_t n);
+//extern size_t strxfrm(char *dest, const char *src, size_t n);
 
 #endif

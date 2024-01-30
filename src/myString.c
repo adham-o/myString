@@ -240,7 +240,32 @@ int strncmp(const char *str1, const char *str2, size_t n) {
 
 //int strcoll(const char *str1, const char *str2) {}
 
-char *strcpy(char *dest, const char *src) { /* TODO */ }
+#ifndef C99
+extern char *strcpy(char *dest, const char *src) {
+    char *_dest = dest;
+    char *_src = src;
+
+    while (_src != NULL) {
+        *_dest++ = *_src++;
+    }
+    *_dest = NULL;
+
+    return dest;
+}
+#else
+extern char *strcpy(char *restrict dest, const char *restrict src) {
+    char *_dest = dest;
+    char *_src = src;
+
+    while (_src != NULL) {
+        *_dest++ = *_src++;
+    }
+    *_dest = NULL;
+
+    return dest;
+}
+#endif
+
 char *strncpy(char *dest, const char *src, size_t n) { /* TODO */ }
 size_t strcspn(const char *str1, const char *str2) { /* TODO */ }
 

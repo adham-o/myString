@@ -65,7 +65,13 @@ extern char *strchr(const char *str, int c);
 extern int strcmp(const char *str1, const char *str2);
 extern int strncmp(const char *str1, const char *str2, size_t n);
 //extern int strcoll(const char *str1, const char *str2);
+
+#ifndef C99
 extern char *strcpy(char *dest, const char *src);
+#else
+extern char *strcpy(char *restrict dest, const char *restrict src);
+#endif
+
 extern char *strncpy(char *dest, const char *src, size_t n);
 extern size_t strcspn(const char *str1, const char *str2);
 //extern char *strerror(int errnum);

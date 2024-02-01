@@ -395,7 +395,29 @@ char *strrchr(const char *str, int c) {
     }
 }
 
-size_t strspn(const char *str1, const char *str2) { /* TODO */ }
+size_t strspn(const char *str1, const char *str2) {
+    char *_str1 = str1;
+    char *_str2 = str2;
+    bool str2_lookup_table[256] = {false};
+    size_t res = 0;
+
+    // Initialize lookup table for str2
+
+    while (*_str2 != NULL) {
+        str2_lookup_table[*_str2++] = true;
+    }
+    while (*_str1 != NULL) {
+        if (str2_lookup_table[*_str1++] == false) {
+            break;
+        }
+        else {
+            ++res;
+        }
+    }
+    
+    return res;
+}
+
 char *strstr(const char *haystack, const char *needle) { /* TODO */ }
 char *strtok(char *str, const char *delim) { /* TODO */ }
 

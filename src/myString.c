@@ -366,7 +366,35 @@ char *strpbrk(const char *str1, const char *str2) {
     return break_char;
 }
 
-char *strrchr(const char *str, int c) { /* TODO */ }
+char *strrchr(const char *str, int c) {
+    unsigned char _c = (unsigned char)c;
+    unsigned char *cptr = (unsigned char *)str;
+    unsigned char *last_c = NULL;
+    bool match_found = false;
+
+    if (_c == NULL) {
+        while (*cptr++ != NULL) {}    // iterate until end of str is reached
+        last_c = cptr;
+        match_found = true;
+    }
+    else {
+        while (cptr != NULL) {
+            if (*cptr == _c) {
+                last_c = cptr;
+                match_found = true;
+            }
+            ++cptr;
+        }
+    }
+
+    if (match_found) {
+        return last_c;
+    }
+    else {
+        return NULL;
+    }
+}
+
 size_t strspn(const char *str1, const char *str2) { /* TODO */ }
 char *strstr(const char *haystack, const char *needle) { /* TODO */ }
 char *strtok(char *str, const char *delim) { /* TODO */ }

@@ -344,7 +344,28 @@ size_t strlen(const char *str) {
     return (size_t)(_str-str-1);
 }
 
-char *strpbrk(const char *str1, const char *str2) { /* TODO */ }
+char *strpbrk(const char *str1, const char *str2) {
+    char *break_char = str1;
+    char *_str2 = str2;
+    bool str2_lookup_table[256] = {false};
+
+    // Initialize lookup table for str2
+
+    while (*_str2 != NULL) {
+        str2_lookup_table[*_str2++] = true;
+    }
+    while (*break_char != NULL) {
+        if (str2_lookup_table[*break_char] == true) {
+            break;
+        }
+        else {
+            ++break_char;
+        }
+    }
+    
+    return break_char;
+}
+
 char *strrchr(const char *str, int c) { /* TODO */ }
 size_t strspn(const char *str1, const char *str2) { /* TODO */ }
 char *strstr(const char *haystack, const char *needle) { /* TODO */ }

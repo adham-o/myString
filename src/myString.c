@@ -418,7 +418,28 @@ size_t strspn(const char *str1, const char *str2) {
     return res;
 }
 
-char *strstr(const char *haystack, const char *needle) { /* TODO */ }
+char *strstr(const char *haystack, const char *needle) {
+    const size_t haystack_s = strlen(haystack);
+    const size_t needle_s = strlen(needle);
+    
+    if (needle_s > haystack_s) {    // haystack can't contain a substring longer
+                                                // than itself
+        return NULL;
+    }
+
+    // Define searching window for substring needle
+
+    char *window_start = haystack;
+    char *window_end = haystack + needle_s - 1;
+    int substr_n = haystack_s - needle_s + 1;
+
+    char *_needle = needle;
+
+    for (size_t iter_window = 0; iter_window < substr_n; ++iter_window) {
+        
+    }
+}
+
 char *strtok(char *str, const char *delim) { /* TODO */ }
 
 //size_t strxfrm(char *dest, const char *src, size_t n) {}

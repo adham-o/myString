@@ -440,6 +440,66 @@ char *strstr(const char *haystack, const char *needle) {
     }
 }
 
-char *strtok(char *str, const char *delim) { /* TODO */ }
+#ifndef C99
+char *strtok(char *str, const char *delim) {
+    static char *curr_str = NULL;
+    char *curr_tok = NULL;
+    static bool first_call = true;
+
+    if (str != NULL && first_call) {                 // first call to strtok for this string
+        first_call = false;
+        curr_str = str;
+        curr_str += strspn(curr_str, delim);         // find beginning of first token
+        curr_tok = strtok(NULL, delim);
+    }
+    else {                                           // subsequent calls to strtok for this string
+        curr_tok = curr_str;
+        if (curr_str != NULL) {                      // search only if end of current string not reached
+            curr_str += strcspn(curr_str, delim);    // find beginning of next token
+            if (*curr_str == NULL) {                 // if end of current string is reached
+                curr_str = NULL;                     // stop searching for subsequent tokens
+            }
+            else {
+                *curr_str++ = NULL;                  // replace content of current delimiter with
+                                                     // null char and increment curr_str pointer to
+                                                     // beginning of next token
+
+            }
+        }
+    }
+
+    return curr_tok;
+}
+#else
+char *strtok(char *restrict str, const char *restrict delim) {
+    static char *curr_str = NULL;
+    char *curr_tok = NULL;
+    static bool first_call = true;
+
+    if (str != NULL && first_call) {                 // first call to strtok for this string
+        first_call = false;
+        curr_str = str;
+        curr_str += strspn(curr_str, delim);         // find beginning of first token
+        curr_tok = strtok(NULL, delim);
+    }
+    else {                                           // subsequent calls to strtok for this string
+        curr_tok = curr_str;
+        if (curr_str != NULL) {                      // search only if end of current string not reached
+            curr_str += strcspn(curr_str, delim);    // find beginning of next token
+            if (*curr_str == NULL) {                 // if end of current string is reached
+                curr_str = NULL;                     // stop searching for subsequent tokens
+            }
+            else {
+                *curr_str++ = NULL;                  // replace content of current delimiter with
+                                                     // null char and increment curr_str pointer to
+                                                     // beginning of next token
+
+            }
+        }
+    }
+
+    return curr_tok;
+}
+#endif
 
 //size_t strxfrm(char *dest, const char *src, size_t n) {}

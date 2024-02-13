@@ -85,7 +85,12 @@ extern char *strpbrk(const char *str1, const char *str2);
 extern char *strrchr(const char *str, int c);
 extern size_t strspn(const char *str1, const char *str2);
 extern char *strstr(const char *haystack, const char *needle);
+
+#ifndef C99
 extern char *strtok(char *str, const char *delim);
+#else
+extern char *strtok(char *restrict str, const char *restrict delim);
+#endif
 //extern size_t strxfrm(char *dest, const char *src, size_t n);
 
 #endif
